@@ -8,5 +8,5 @@ cd ..
 cp bin/pilot docker-images/
 )
 
-docker build -t pilot .
+docker build -t d.v87.us/fluentd-pilot .
 
