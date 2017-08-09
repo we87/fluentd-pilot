@@ -9,8 +9,10 @@ import subprocess
 base='/host'
 
 def umount(volume):
-    subprocess.check_call('umount %s' % volume, shell=True)
-    #TODO retry
+    try:
+        subprocess.check_call('umount %s' % volume, shell=True)
+    except subprocess.CalledProcessError as e:
+        print 'unmount %s failed: %s' % (volume, e.output)
 
 def cleanup():
     with open('/proc/mounts', 'r') as f:
